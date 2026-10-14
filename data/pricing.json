@@ -1,0 +1,6 @@
+{
+  "defaultTaxRate": 0.18,
+  "defaultDiscountRate": 0.05,
+  "currency": "INR",
+  "currencySymbol": "₹"
+}

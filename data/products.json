@@ -1,0 +1,134 @@
+[
+  {
+    "productId": 101,
+    "sku": "PMP-1001",
+    "name": "Industrial Pump X",
+    "category": "Industrial Pumps",
+    "description": "High-efficiency centrifugal pump for heavy industrial fluid transfer.",
+    "basePrice": 50000.0,
+    "availability": 15,
+    "rating": 4.8,
+    "priority": 1
+  },
+  {
+    "productId": 102,
+    "sku": "PMP-1002",
+    "name": "Industrial Pump Y",
+    "category": "Industrial Pumps",
+    "description": "Positive displacement pump suitable for viscous chemicals.",
+    "basePrice": 62000.0,
+    "availability": 8,
+    "rating": 4.6,
+    "priority": 2
+  },
+  {
+    "productId": 103,
+    "sku": "MTR-2001",
+    "name": "Industrial Motor A",
+    "category": "Electric Motors",
+    "description": "Three-phase induction motor with IP66 rating.",
+    "basePrice": 25000.0,
+    "availability": 25,
+    "rating": 4.9,
+    "priority": 1
+  },
+  {
+    "productId": 104,
+    "sku": "MTR-2002",
+    "name": "Industrial Motor B",
+    "category": "Electric Motors",
+    "description": "Explosion-proof heavy duty motor for hazardous zones.",
+    "basePrice": 38000.0,
+    "availability": 12,
+    "rating": 4.7,
+    "priority": 2
+  },
+  {
+    "productId": 105,
+    "sku": "CTL-3001",
+    "name": "Control Unit A",
+    "category": "Controllers",
+    "description": "Programmable logic controller with digital and analog I/O.",
+    "basePrice": 18000.0,
+    "availability": 30,
+    "rating": 4.5,
+    "priority": 1
+  },
+  {
+    "productId": 106,
+    "sku": "CTL-3002",
+    "name": "Control Unit B",
+    "category": "Controllers",
+    "description": "Advanced VFD speed controller with remote telemetry.",
+    "basePrice": 29000.0,
+    "availability": 18,
+    "rating": 4.8,
+    "priority": 2
+  },
+  {
+    "productId": 107,
+    "sku": "SNS-4001",
+    "name": "Pressure Sensor",
+    "category": "Sensors",
+    "description": "Piezoelectric pressure transmitter 0-100 bar.",
+    "basePrice": 4500.0,
+    "availability": 50,
+    "rating": 4.6,
+    "priority": 1
+  },
+  {
+    "productId": 108,
+    "sku": "SNS-4002",
+    "name": "Temperature Sensor",
+    "category": "Sensors",
+    "description": "RTD PT100 temperature probe with digital display.",
+    "basePrice": 3200.0,
+    "availability": 45,
+    "rating": 4.4,
+    "priority": 2
+  },
+  {
+    "productId": 109,
+    "sku": "PWR-5001",
+    "name": "Power Module",
+    "category": "Power Supplies",
+    "description": "DIN-rail 24V DC regulated power supply module.",
+    "basePrice": 7500.0,
+    "availability": 40,
+    "rating": 4.7,
+    "priority": 1
+  },
+  {
+    "productId": 110,
+    "sku": "MNT-6001",
+    "name": "Mounting Kit",
+    "category": "Hardware",
+    "description": "Heavy-duty vibration damping baseplate and hardware.",
+    "basePrice": 5000.0,
+    "availability": 60,
+    "rating": 4.3,
+    "priority": 1
+  },
+  {
+    "productId": 111,
+    "sku": "VLV-7001",
+    "name": "Solenoid Valve",
+    "category": "Valves",
+    "description": "Stainless steel 2-way normally closed solenoid valve.",
+    "basePrice": 11000.0,
+    "availability": 22,
+    "rating": 4.5,
+    "priority": 1
+  },
+  {
+    "productId": 112,
+    "sku": "COM-8001",
+    "name": "Modbus Gateway",
+    "category": "Communication Modules",
+    "description": "RS485 to Modbus TCP Ethernet gateway adapter.",
+    "basePrice": 14000.0,
+    "availability": 16,
+    "rating": 4.6,
+    "priority": 1
+  }
+]

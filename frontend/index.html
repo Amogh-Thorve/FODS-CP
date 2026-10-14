@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CONFIGCORE - CPQ Product Configuration Engine</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo">CC</div>
+        <div class="brand-text">
+          <h1>CONFIGCORE</h1>
+          <p>CPQ DS Engine</p>
+        </div>
+      </div>
+      <ul class="nav-list">
+        <li class="nav-item active" data-view="dashboard"><span class="icon">📊</span> Dashboard</li>
+        <li class="nav-item" data-view="products"><span class="icon">📦</span> Products</li>
+        <li class="nav-item" data-view="configurator"><span class="icon">⚙️</span> Configurator</li>
+        <li class="nav-item" data-view="compatibility"><span class="icon">🕸️</span> Compatibility</li>
+        <li class="nav-item" data-view="rules"><span class="icon">📜</span> Rules Engine</li>
+        <li class="nav-item" data-view="pricing"><span class="icon">🏷️</span> Pricing Engine</li>
+        <li class="nav-item" data-view="recommendations"><span class="icon">💡</span> Recommendations</li>
+        <li class="nav-item" data-view="queue"><span class="icon">📥</span> Quote Queue</li>
+        <li class="nav-item" data-view="structures"><span class="icon">🧩</span> Data Structures</li>
+        <li class="nav-item" data-view="algorithms"><span class="icon">⚡</span> Algorithms Lab</li>
+        <li class="nav-item" data-view="benchmark"><span class="icon">📈</span> Benchmarks</li>
+        <li class="nav-item" data-view="history"><span class="icon">⏳</span> History & Undo</li>
+        <li class="nav-item" data-view="syllabus"><span class="icon">🎓</span> Syllabus Coverage</li>
+        <li class="nav-item" data-view="complexity"><span class="icon">⏱️</span> Complexity Matrix</li>
+        <li class="nav-item" data-view="system"><span class="icon">🖥️</span> System Info</li>
+      </ul>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Top Header -->
+      <header class="top-header">
+        <div class="header-title">
+          <h2 id="page-title">Dashboard</h2>
+        </div>
+        <div class="header-status">
+          <button class="btn btn-demo pulse-glow" onclick="openDemoModal()"><span class="icon">✨</span> Guided Demo</button>
+          <button class="btn btn-outline" onclick="runCompleteConfigurationPreset()"><span class="icon">⚡</span> 1-Click Configure</button>
+          <div class="badge badge-success"><div class="pulse-dot"></div> C Backend Engine Active</div>
+          <div class="badge badge-info">Port: 8080</div>
+        </div>
+      </header>
+
+      <!-- Page Views Container -->
+      <div class="page-container">
+        <!-- 1. Dashboard View -->
+        <div id="view-dashboard" class="page-view active">
+          <!-- Interactive Demo Hero Banner -->
+          <div class="demo-hero-banner">
+            <div class="demo-hero-header">
+              <div class="demo-hero-title">
+                <h2><span>✨</span> Complete CPQ Product Configuration Demo</h2>
+                <p>Experience an end-to-end industrial product configuration with real-time C algorithms: SKU Hash Maps, Singly Linked List vectors, Postfix rule stacks, Graph cycle validation, and FIFO Quote scheduling.</p>
+              </div>
+              <div class="demo-hero-actions">
+                <button class="btn btn-demo pulse-glow" onclick="openDemoModal()"><span class="icon">🚀</span> Launch Guided Demo</button>
+                <button class="btn btn-primary" onclick="runCompleteConfigurationPreset()"><span class="icon">⚡</span> 1-Click Auto Configure</button>
+                <button class="btn btn-outline" onclick="navigateToConfigurator()"><span class="icon">⚙️</span> Open 9-Step Wizard</button>
+              </div>
+            </div>
+            <div class="demo-hero-pipeline">
+              <span style="font-weight: 700; color: var(--text-primary);">C Engine Pipeline:</span>
+              <span class="pipeline-step"><code>1</code> SKU Hash Map</span>
+              <span class="pipeline-arrow">→</span>
+              <span class="pipeline-step"><code>2</code> SLL Vector</span>
+              <span class="pipeline-arrow">→</span>
+              <span class="pipeline-step"><code>3</code> Infix→Postfix Stack</span>
+              <span class="pipeline-arrow">→</span>
+              <span class="pipeline-step"><code>4</code> Graph Acyclic Test</span>
+              <span class="pipeline-arrow">→</span>
+              <span class="pipeline-step"><code>5</code> Pricing Math</span>
+              <span class="pipeline-arrow">→</span>
+              <span class="pipeline-step"><code>6</code> FIFO Queue</span>
+            </div>
+          </div>
+
+          <div class="grid-4">
+            <div class="card">
+              <div class="card-title">Total Products</div>
+              <div class="stat-value" id="stat-total-products">10</div>
+              <div class="stat-subtext">C Product Array</div>
+            </div>
+            <div class="card">
+              <div class="card-title">Total Options</div>
+              <div class="stat-value" id="stat-total-options">12</div>
+              <div class="stat-subtext">C Option Array</div>
+            </div>
+            <div class="card">
+              <div class="card-title">Active Configuration</div>
+              <div class="stat-value" id="stat-active-config">0 items</div>
+              <div class="stat-subtext">Singly Linked List</div>
+            </div>
+            <div class="card">
+              <div class="card-title">Pending Quote Jobs</div>
+              <div class="stat-value" id="stat-pending-jobs">0</div>
+              <div class="stat-subtext">FIFO Array Queue</div>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <div class="card">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                <h3 style="margin: 0;">Product Catalog Quick Glance</h3>
+                <button class="btn btn-outline" style="padding: 4px 10px; font-size: 12px;" onclick="navigateToProducts()">View All 10 Products →</button>
+              </div>
+              <div class="table-container">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>SKU</th>
+                      <th>Product Name</th>
+                      <th>Category</th>
+                      <th>Base Price</th>
+                      <th>Stock</th>
+                    </tr>
+                  </thead>
+                  <tbody id="dashboard-product-table"></tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card">
+              <h3>CPQ Engine Data Structure Mapping</h3>
+              <div style="margin-top: 16px; font-size: 13px; line-height: 1.6;">
+                <p>• <strong>Active Config:</strong> Singly Linked List (<code>ConfigLinkedList</code>)</p>
+                <p>• <strong>History Timeline:</strong> Doubly Linked List (<code>DoublyHistoryList</code>)</p>
+                <p>• <strong>Rule Stack:</strong> Infix to Postfix Stack Evaluation (<code>ArrayStack</code>)</p>
+                <p>• <strong>Graph Engine:</strong> Compatibility Graph (Adjacency Matrix & List)</p>
+                <p>• <strong>SKU Lookup:</strong> Hash Table (Separate Chaining <code>TABLE_SIZE=37</code>)</p>
+                <p>• <strong>Quote Processing:</strong> FIFO Array Queue & Circular Queue</p>
+              </div>
+              <div style="margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border-color); display: flex; gap: 10px;">
+                <button class="btn btn-primary" style="flex: 1; justify-content: center;" onclick="runCompleteConfigurationPreset()">⚡ Auto-Configure Demo Rig</button>
+                <button class="btn btn-outline" style="flex: 1; justify-content: center;" onclick="openDemoModal()">✨ Guided Walkthrough</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Products View -->
+        <div id="view-products" class="page-view">
+          <div id="product-catalog-grid" class="grid-2"></div>
+        </div>
+
+        <!-- 3. Configurator View (Complete 9-Step Interactive Wizard) -->
+        <div id="view-configurator" class="page-view">
+          <div class="wizard-header-bar">
+            <div>
+              <h3 style="font-size: 18px; margin: 0;">Industrial Product Configurator</h3>
+              <p style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">Step-by-step modular configuration vector built in pure C memory.</p>
+            </div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <button class="btn btn-demo" onclick="openDemoModal()"><span class="icon">✨</span> Guided Demo</button>
+              <button class="btn btn-primary" onclick="runCompleteConfigurationPreset()"><span class="icon">⚡</span> 1-Click Demo Rig</button>
+              <button class="btn btn-outline" onclick="triggerUndo()" title="Doubly Linked List Previous State">⬅ Undo</button>
+              <button class="btn btn-outline" onclick="triggerRedo()" title="Doubly Linked List Next State">Redo ➡</button>
+              <button class="btn btn-outline" style="color: var(--accent-danger);" onclick="resetConfiguration()"><span class="icon">🔄</span> Reset</button>
+            </div>
+          </div>
+
+          <!-- Progress Bar -->
+          <div class="wizard-progress-track">
+            <div id="wizard-progress-fill" class="wizard-progress-fill"></div>
+          </div>
+
+          <!-- 9 Wizard Step Headers -->
+          <div class="wizard-steps" id="wizard-steps-container">
+            <div class="wizard-step active" data-step="1" onclick="goToStep(1)">1. Product</div>
+            <div class="wizard-step" data-step="2" onclick="goToStep(2)">2. Motor</div>
+            <div class="wizard-step" data-step="3" onclick="goToStep(3)">3. Voltage</div>
+            <div class="wizard-step" data-step="4" onclick="goToStep(4)">4. Material</div>
+            <div class="wizard-step" data-step="5" onclick="goToStep(5)">5. Controller</div>
+            <div class="wizard-step" data-step="6" onclick="goToStep(6)">6. Sensors & Kit</div>
+            <div class="wizard-step" data-step="7" onclick="goToStep(7)">7. Validation</div>
+            <div class="wizard-step" data-step="8" onclick="goToStep(8)">8. Pricing</div>
+            <div class="wizard-step" data-step="9" onclick="goToStep(9)">9. Quote</div>
+          </div>
+
+          <!-- Wizard Workspace Grid -->
+          <div class="grid-2">
+            <!-- Left Column: Active Step Panel -->
+            <div>
+              <!-- Step 1: Base Product Selection -->
+              <div id="wizard-panel-1" class="wizard-step-panel active card">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                  <div>
+                    <h3>Step 1: Select Base Product</h3>
+                    <p style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">Stored in C Product Array & indexed by SKU Hash Table.</p>
+                  </div>
+                  <div class="filter-tabs" id="product-category-filters">
+                    <button class="filter-tab active" onclick="filterProductCategory('ALL', this)">All (10)</button>
+                    <button class="filter-tab" onclick="filterProductCategory('Industrial Pumps', this)">Pumps</button>
+                    <button class="filter-tab" onclick="filterProductCategory('Electric Motors', this)">Motors</button>
+                    <button class="filter-tab" onclick="filterProductCategory('Controllers', this)">Controllers</button>
+                  </div>
+                </div>
+                <div id="step-products-grid" class="selection-grid"></div>
+              </div>
+
+              <!-- Step 2: Motor Selection -->
+              <div id="wizard-panel-2" class="wizard-step-panel card">
+                <h3>Step 2: Motor Horsepower Sizing</h3>
+                <p style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">Select driver motor. 15 HP requires 415 V power supply per Rule #1.</p>
+                <div id="step-motors-grid" class="selection-grid"></div>
+              </div>
+
+              <!-- Step 3: Voltage & Power Selection -->
+              <div id="wizard-panel-3" class="wizard-step-panel card">
+                <h3>Step 3: Power Supply Voltage</h3>
+                <p style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">Ensure compatibility. 15 HP Motor + 230 V is strictly INVALID (Rule #5).</p>
+                <div id="step-voltage-grid" class="selection-grid"></div>
+              </div>
+
+              <!-- Step 4: Material Selection -->
+              <div id="wizard-panel-4" class="wizard-step-panel card">
+                <h3>Step 4: Casing Material</h3>
+                <p style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">Stainless Steel provides chemical resistance with premium surcharge (Rule #3).</p>
+                <div id="step-material-grid" class="selection-grid"></div>
+              </div>
+
+              <!-- Step 5: Controller Selection -->
+              <div id="wizard-panel-5" class="wizard-step-panel card">
+                <h3>Step 5: Control Unit & Automation</h3>
+                <p style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">Advanced Controller requires a Mounting Kit per Rule #4.</p>
+                <div id="step-controller-grid" class="selection-grid"></div>
+              </div>
+
+              <!-- Step 6: Sensors & Accessories -->
+              <div id="wizard-panel-6" class="wizard-step-panel card">
+                <h3>Step 6: Sensors & Mounting Accessories</h3>
+                <p style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">Sensors require a controller (Rule #2). Mounting Kit anchors the telemetry module.</p>
+                <div id="step-accessories-grid" class="selection-grid"></div>
+              </div>
+
+              <!-- Step 7: Live C Validation & Rule Stack -->
+              <div id="wizard-panel-7" class="wizard-step-panel card">
+                <h3>Step 7: C Validation & Postfix Stack Evaluation</h3>
+                <p style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">Live execution of Infix → Postfix stack evaluation and Graph Cycle Detection.</p>
+                <div id="step-validation-details" style="margin-top: 16px;"></div>
+              </div>
+
+              <!-- Step 8: Pricing Breakdown & Recommendations -->
+              <div id="wizard-panel-8" class="wizard-step-panel card">
+                <h3>Step 8: Pricing Engine & QuickSort Recommendations</h3>
+                <p style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">Real-time pricing matrix calculation with 5% discount and 18% GST in C.</p>
+                <div id="step-pricing-details" style="margin-top: 16px;"></div>
+              </div>
+
+              <!-- Step 9: Formal Quote Generation -->
+              <div id="wizard-panel-9" class="wizard-step-panel card">
+                <h3>Step 9: Formal CPQ Quote & Queue Scheduling</h3>
+                <p style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">Enqueues formal job into FIFO ArrayQueue & Circular Queue buffers.</p>
+                <div id="step-quote-details" style="margin-top: 16px;"></div>
+              </div>
+
+              <!-- Step Navigation Footer -->
+              <div class="wizard-nav-footer">
+                <button id="btn-wizard-prev" class="btn btn-outline" onclick="stepPrevious()">⬅ Previous Step</button>
+                <span id="wizard-step-counter" style="font-size: 13px; color: var(--text-secondary); font-weight: 600;">Step 1 of 9</span>
+                <button id="btn-wizard-next" class="btn btn-primary" onclick="stepNext()">Next Step ➡</button>
+              </div>
+            </div>
+
+            <!-- Right Column: Live SLL Visualizer, Active Config, Conflicts & Pricing -->
+            <div>
+              <!-- Conflict / Auto-Resolve Alert -->
+              <div id="cfg-conflict-alert" style="display: none; margin-bottom: 16px;"></div>
+
+              <!-- Active Configuration (SLL Items) -->
+              <div class="card" style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <h3 style="margin: 0;">Active Configuration Vector</h3>
+                  <span id="cfg-badge-count" class="badge badge-info">0 items</span>
+                </div>
+                <div id="cfg-summary-list" style="margin-top: 14px;"></div>
+              </div>
+
+              <!-- Live Singly Linked List Graphical Visualizer -->
+              <div class="card" style="margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <div>
+                    <h3 style="margin: 0;">C Singly Linked List Visualizer</h3>
+                    <div style="font-size: 11px; color: var(--text-muted); font-family: monospace;">struct ConfigLinkedList { ConfigNode *head; int count; }</div>
+                  </div>
+                  <span class="badge badge-success">C Memory</span>
+                </div>
+                <div class="sll-visualizer-container">
+                  <div class="sll-nodes-track" id="sll-nodes-container">
+                    <span class="sll-pill sll-head">HEAD</span>
+                    <span class="sll-arrow">→</span>
+                    <span class="sll-pill sll-null">NULL</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Live C Validation Status Box -->
+              <div id="cfg-validation-box" class="card" style="margin-bottom: 20px;">
+                <div style="color: var(--text-muted);">Select base product and options to trigger real-time C engine validation.</div>
+              </div>
+
+              <!-- Quick Pricing Summary Box -->
+              <div id="cfg-quick-price-box" class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 14px; color: var(--text-secondary);">Subtotal (Base + Options):</span>
+                  <strong id="price-subtotal">₹0</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px; font-size: 13px; color: var(--accent-success);">
+                  <span>Discount (5%):</span>
+                  <strong id="price-discount">- ₹0</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px; font-size: 13px; color: var(--accent-info);">
+                  <span>Tax (18% GST):</span>
+                  <strong id="price-tax">+ ₹0</strong>
+                </div>
+                <hr style="border-color: var(--border-color); margin: 12px 0;" />
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <span style="font-size: 16px; font-weight: 700;">Final Calculated Total:</span>
+                  <span id="price-total" style="font-size: 22px; font-weight: 800; color: var(--accent-success);">₹0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Compatibility View -->
+        <div id="view-compatibility" class="page-view">
+          <div class="card" style="margin-bottom: 20px;">
+            <h3>Product Compatibility & Graph Relationship Engine</h3>
+            <p style="font-size: 13px; color: var(--text-secondary); margin-top: 4px;">Executes BFS, DFS, Cycle Detection, Dijkstra's Shortest Path, Prim/Kruskal MST in C.</p>
+          </div>
+          <div id="graph-canvas" class="ds-canvas"></div>
+        </div>
+
+        <!-- 5. Rules View -->
+        <div id="view-rules" class="page-view">
+          <div class="card" style="margin-bottom: 24px;">
+            <h3>Rule Expression Converter & Stack Evaluator (Infix → Postfix)</h3>
+            <div style="display: flex; gap: 12px; margin-top: 12px;">
+              <input type="text" id="rule-expr-input" class="form-control" value="Motor15HP AND Voltage415" />
+              <button class="btn btn-primary" onclick="convertRuleExpression()">Evaluate Stack</button>
+            </div>
+            <div id="rule-expr-result" style="margin-top: 16px;"></div>
+          </div>
+
+          <div class="card">
+            <h3>Registered CPQ Configuration Rules</h3>
+            <div class="table-container" style="margin-top: 12px;">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Rule ID</th>
+                    <th>Name</th>
+                    <th>Condition</th>
+                    <th>Action</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody id="rules-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Pricing View -->
+        <div id="view-pricing" class="page-view">
+          <div class="card" style="max-width: 600px; margin: 0 auto;">
+            <h3 style="margin-bottom: 16px;">C Pricing Engine Calculation Breakdown</h3>
+            <div id="pricing-breakdown-card"></div>
+          </div>
+        </div>
+
+        <!-- 7. Recommendations View -->
+        <div id="view-recommendations" class="page-view">
+          <div id="recommendations-grid" class="grid-2"></div>
+        </div>
+
+        <!-- 8. Quote Queue View -->
+        <div id="view-queue" class="page-view">
+          <div class="card" style="margin-bottom: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <h3>Quote Generation Job Queue</h3>
+              <button class="btn btn-success" onclick="triggerQuoteGeneration()">+ Generate Quote</button>
+            </div>
+          </div>
+          <div id="queue-status-box" class="card"></div>
+        </div>
+
+        <!-- 9. Data Structures Inspector View -->
+        <div id="view-structures" class="page-view">
+          <div id="structures-inspector-container"></div>
+        </div>
+
+        <!-- 10. Algorithms Lab View -->
+        <div id="view-algorithms" class="page-view">
+          <div class="card">
+            <h3>Algorithms Lab</h3>
+            <p style="margin-top: 8px; font-size: 14px; color: var(--text-secondary);">
+              All 5 Searching Algorithms (Linear, Binary, Indexed Sequential, Interpolation, Fibonacci) and 10 Sorting Algorithms (Bubble, Selection, Insertion, Merge, Quick, Heap, Radix, Shell, Counting, Bucket) implemented manually in pure C!
+            </p>
+          </div>
+        </div>
+
+        <!-- 11. Benchmark View -->
+        <div id="view-benchmark" class="page-view">
+          <div id="benchmark-results-box" class="card"></div>
+        </div>
+
+        <!-- 12. History View -->
+        <div id="view-history" class="page-view">
+          <div class="card" style="margin-bottom: 20px; display: flex; gap: 12px;">
+            <button class="btn btn-primary" onclick="triggerUndo()">⬅ Undo (Previous State)</button>
+            <button class="btn btn-outline" onclick="triggerRedo()">Redo (Next State) ➡</button>
+          </div>
+          <div id="history-timeline-box" class="card"></div>
+        </div>
+
+        <!-- 13. Syllabus Coverage View -->
+        <div id="view-syllabus" class="page-view">
+          <div class="card">
+            <h3 style="margin-bottom: 16px;">Complete Syllabus Coverage Report</h3>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Unit</th>
+                    <th>Data Structure / Algorithm</th>
+                    <th>C Source File</th>
+                    <th>CPQ Engine Application</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>UNIT 1</td><td>Arrays, Linear/Binary/Interpolation/Fibonacci Search</td><td><code>arrays.c</code>, <code>search.c</code></td><td>Product catalog vectors, SKU lookups</td><td><span class="badge badge-success">✓ Implemented</span></td></tr>
+                  <tr><td>UNIT 1</td><td>Bubble, Selection, Insertion, Merge, Quick, Heap, Radix, Shell, Counting, Bucket Sort</td><td><code>sorting.c</code></td><td>Recommendation candidate ranking</td><td><span class="badge badge-success">✓ Implemented</span></td></tr>
+                  <tr><td>UNIT 2</td><td>Singly, Doubly, Circular, Generalized Linked Lists</td><td><code>linked_list.c</code>, <code>doubly_list.c</code></td><td>Active configuration & timeline history</td><td><span class="badge badge-success">✓ Implemented</span></td></tr>
+                  <tr><td>UNIT 3</td><td>Stack (Array & List), Infix/Postfix Conversion</td><td><code>stack.c</code>, <code>expression.c</code></td><td>Undo stack, rule evaluation</td><td><span class="badge badge-success">✓ Implemented</span></td></tr>
+                  <tr><td>UNIT 3</td><td>Queue (Linear, Circular, Deque)</td><td><code>queue.c</code>, <code>circular_queue.c</code></td><td>Quote job scheduling & worker buffers</td><td><span class="badge badge-success">✓ Implemented</span></td></tr>
+                  <tr><td>UNIT 4</td><td>General Tree, Binary Tree, BST, Threaded Tree</td><td><code>tree.c</code>, <code>binary_tree.c</code>, <code>bst.c</code></td><td>Product option hierarchy & tree traversals</td><td><span class="badge badge-success">✓ Implemented</span></td></tr>
+                  <tr><td>UNIT 5</td><td>Graphs (Matrix/List), BFS, DFS, Dijkstra, Prim, Kruskal, Union-Find</td><td><code>graph.c</code>, <code>bfs.c</code>, <code>dfs.c</code></td><td>Compatibility matrix & shortest dependency path</td><td><span class="badge badge-success">✓ Implemented</span></td></tr>
+                  <tr><td>UNIT 6</td><td>Hash Tables (Chaining, Open Addressing, Perfect, Extendible)</td><td><code>hashing.c</code>, <code>perfect_hash.c</code></td><td>Fast SKU -> Product map</td><td><span class="badge badge-success">✓ Implemented</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14. Complexity View -->
+        <div id="view-complexity" class="page-view">
+          <div class="card">
+            <h3>Complexity Reference</h3>
+            <div class="table-container" style="margin-top: 16px;">
+              <table>
+                <thead>
+                  <tr><th>Data Structure / Algorithm</th><th>Time Complexity (Average)</th><th>Time Complexity (Worst)</th><th>Space Complexity</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>Array Access</td><td>O(1)</td><td>O(1)</td><td>O(n)</td></tr>
+                  <tr><td>Singly Linked List Insert / Delete</td><td>O(1)</td><td>O(1)</td><td>O(n)</td></tr>
+                  <tr><td>Binary Search</td><td>O(log n)</td><td>O(log n)</td><td>O(1)</td></tr>
+                  <tr><td>Quick Sort</td><td>O(n log n)</td><td>O(n²)</td><td>O(log n)</td></tr>
+                  <tr><td>Merge Sort</td><td>O(n log n)</td><td>O(n log n)</td><td>O(n)</td></tr>
+                  <tr><td>Hash Table Lookup</td><td>O(1)</td><td>O(n)</td><td>O(n)</td></tr>
+                  <tr><td>Dijkstra Shortest Path</td><td>O(V²)</td><td>O(V²)</td><td>O(V)</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- 15. System Info View -->
+        <div id="view-system" class="page-view">
+          <div class="card">
+            <h3>System Information</h3>
+            <p style="margin-top: 8px;"><strong>Engine:</strong> CONFIGCORE C CPQ Engine v1.0</p>
+            <p><strong>Server Port:</strong> 8080</p>
+            <p><strong>C Standard:</strong> C11 (GCC MinGW)</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Interactive Guided Demo Modal Overlay -->
+  <div id="demo-modal" class="demo-modal-backdrop">
+    <div class="demo-modal">
+      <div class="demo-modal-header">
+        <div>
+          <div style="font-size: 11px; color: var(--accent-info); font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">Interactive CPQ DS Walkthrough</div>
+          <h3 style="margin: 4px 0 0 0; font-size: 18px; color: var(--text-primary);">Configuring Industrial Pump System Demo</h3>
+        </div>
+        <button class="btn btn-outline" style="padding: 4px 10px; font-size: 16px;" onclick="closeDemoModal()">✕</button>
+      </div>
+
+      <!-- Demo Progress Bar -->
+      <div class="wizard-progress-track" style="margin: 0; border-radius: 0; height: 4px;">
+        <div id="demo-progress-fill" class="wizard-progress-fill" style="width: 12.5%;"></div>
+      </div>
+
+      <div class="demo-modal-body">
+        <div id="demo-step-badge" class="demo-step-badge">Stage 1 of 8: Base Product Selection</div>
+        <div class="demo-narrative-card">
+          <h3 id="demo-stage-title" style="margin-bottom: 8px; font-size: 16px;">1. Select Enterprise Base Product</h3>
+          <p id="demo-stage-desc" style="color: var(--text-secondary); line-height: 1.5; font-size: 13px;"></p>
+        </div>
+
+        <div class="demo-ds-spotlight">
+          <div class="demo-ds-spotlight-title"><span>🧩</span> C Engine Data Structure & Algorithm in Action</div>
+          <div id="demo-ds-details" style="font-size: 13px; color: var(--text-primary); line-height: 1.5;"></div>
+        </div>
+
+        <div style="margin-top: 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <span style="font-size: 12px; font-weight: 700; color: var(--accent-info); text-transform: uppercase; letter-spacing: 0.5px;">Live C Linked List State:</span>
+            <span id="demo-live-price" style="font-size: 13px; font-weight: 700; color: var(--accent-success);">Price: ₹0</span>
+          </div>
+          <div id="demo-vector-preview" style="font-family: monospace; font-size: 12px; background: rgba(0,0,0,0.5); padding: 12px; border-radius: 6px; border: 1px solid var(--border-color); overflow-x: auto; color: #a5b4fc;"></div>
+        </div>
+      </div>
+
+      <div class="demo-modal-footer">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <button id="btn-demo-autoplay" class="btn btn-outline" onclick="toggleDemoAutoplay()"><span class="icon">▶</span> Auto-Play</button>
+          <button class="btn btn-outline" style="padding: 6px 10px; font-size: 12px;" onclick="setDemoSpeed(1)">1x</button>
+          <button class="btn btn-outline" style="padding: 6px 10px; font-size: 12px;" onclick="setDemoSpeed(2)">2x</button>
+        </div>
+        <span id="demo-step-indicator" style="font-size: 13px; color: var(--text-secondary); font-weight: 600;">Step 1 of 8</span>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <button id="btn-demo-prev" class="btn btn-outline" onclick="demoPrevStep()">⬅ Previous</button>
+          <button id="btn-demo-next" class="btn btn-primary" onclick="demoNextStep()">Next Step ➡</button>
+          <button class="btn btn-success" onclick="demoInstantFinish()"><span class="icon">⚡</span> Complete All</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Floating Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

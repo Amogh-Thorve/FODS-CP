@@ -1,0 +1,42 @@
+[
+  {
+    "ruleId": 1,
+    "name": "High Power Voltage Rule",
+    "condition": "Motor15HP == 1 AND Voltage415 == 0",
+    "action": "REQUIRE",
+    "targetOption": "415 V Power",
+    "description": "If 15 HP Motor is selected, then 415 V Power must be selected."
+  },
+  {
+    "ruleId": 2,
+    "name": "Sensor Controller Dependency",
+    "condition": "SensorSelected == 1 AND ControllerSelected == 0",
+    "action": "REQUIRE",
+    "targetOption": "Advanced Controller",
+    "description": "If Sensor is selected, then a Controller is required."
+  },
+  {
+    "ruleId": 3,
+    "name": "Stainless Steel Premium Surcharge",
+    "condition": "MaterialSS == 1",
+    "action": "SURCHARGE",
+    "targetOption": "Premium Tax",
+    "description": "If Stainless Steel is chosen, premium pricing susharge applies."
+  },
+  {
+    "ruleId": 4,
+    "name": "Advanced Controller Mounting Kit Requirement",
+    "condition": "AdvancedController == 1 AND MountingKit == 0",
+    "action": "REQUIRE",
+    "targetOption": "Mounting Hardware Kit",
+    "description": "If Advanced Controller is selected, Mounting Kit is required."
+  },
+  {
+    "ruleId": 5,
+    "name": "Low Voltage 15HP Incompatibility",
+    "condition": "Motor15HP == 1 AND Voltage230 == 1",
+    "action": "INVALID",
+    "targetOption": "230 V Power",
+    "description": "15 HP Motor and 230 V Power combination is INVALID."
+  }
+]

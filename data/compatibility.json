@@ -1,0 +1,16 @@
+[
+  {"u": 101, "v": 103, "type": "COMPATIBLE", "weight": 1.0},
+  {"u": 101, "v": 104, "type": "COMPATIBLE", "weight": 1.0},
+  {"u": 103, "v": 201, "type": "COMPATIBLE", "weight": 1.0},
+  {"u": 103, "v": 202, "type": "COMPATIBLE", "weight": 1.0},
+  {"u": 104, "v": 203, "type": "COMPATIBLE", "weight": 1.0},
+  {"u": 203, "v": 205, "type": "REQUIRES", "weight": 2.0},
+  {"u": 203, "v": 204, "type": "INCOMPATIBLE", "weight": 99.0},
+  {"u": 105, "v": 110, "type": "OPTIONAL", "weight": 1.5},
+  {"u": 106, "v": 110, "type": "REQUIRES", "weight": 1.0},
+  {"u": 107, "v": 105, "type": "COMPATIBLE", "weight": 1.0},
+  {"u": 107, "v": 106, "type": "COMPATIBLE", "weight": 1.0},
+  {"u": 108, "v": 105, "type": "COMPATIBLE", "weight": 1.0},
+  {"u": 101, "v": 111, "type": "OPTIONAL", "weight": 1.2},
+  {"u": 106, "v": 112, "type": "OPTIONAL", "weight": 1.8}
+]
